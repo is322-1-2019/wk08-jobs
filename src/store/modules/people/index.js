@@ -1,5 +1,5 @@
 import { getters } from "./getters";
-import { actions } from "./actions";
+import { actions } from "./actions-offlines";
 import { mutations } from "./mutations";
 
 const state = {

@@ -1,7 +1,7 @@
 <template>
   <div class="card-content">
     <b-field label="ค่าที่เลือก">
-      <b-slider size="is-large" v-model="sliderValue"></b-slider>
+      <b-slider @input="fireChanges" size="is-large" v-model="sliderValue"></b-slider>
     </b-field>
   </div>
 </template>
@@ -16,6 +16,17 @@ export default {
     return {
       sliderValue: 0,
     };
+  },
+  methods: {
+    fireChanges() {
+      
+      EventBus.$emit("slider-chage-value", this.sliderValue);
+
+    }
+
+
   }
+
+
 };
 </script>

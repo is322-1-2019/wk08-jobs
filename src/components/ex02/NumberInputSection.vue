@@ -1,4 +1,4 @@
-template>
+<template>
   <div class="card-content">
     <b-field>
       <b-numberinput @input="fireChanges" v-model="number" min="0" max="100"></b-numberinput>

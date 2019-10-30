@@ -8,6 +8,9 @@
           <option>นางสาว</option>
         </b-select>
       </b-field>
+      <b-field label="รหัสนักศึกษา" expanded>
+        <b-input v-model="person.stdid" placeholder="รหัสนักศึกษา" rounded></b-input>
+      </b-field>
       <b-field label="ชื่อ" expanded>
         <b-input v-model="person.firstName" placeholder="ชื่อ" rounded></b-input>
       </b-field>
@@ -21,6 +24,7 @@
       </b-field>
       <b-field>
         <b-button @click="savePerson" type="is-primary">Save</b-button>
+        <b-button @click="getPeople" type="is-primary">Refresh</b-button>
       </b-field>
     </b-field>
   </div>
@@ -30,6 +34,7 @@ export default {
   data() {
     return {
       person: {
+        stdid: "",
         title: "",
         firstName: "",
         lastName: "",
@@ -40,12 +45,18 @@ export default {
   methods: {
     savePerson() {
       this.$store.dispatch("people/addPerson", {
+        stdid: this.person.stdid,
         title: this.person.title,
         firstName: this.person.firstName,
         lastName: this.person.lastName,
         isActive: this.person.isActive,
       });
+    },
+
+ getPeople() {
+      this.$store.dispatch("people/getPeople");
     }
+
   }
 };
 </script>
